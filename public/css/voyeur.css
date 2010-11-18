@@ -1,0 +1,33 @@
+body {
+  color: #888;
+  background-color: #000; }
+  body a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px dotted #fff; }
+
+#wrapper {
+  width: 700px;
+  margin: 40px auto; }
+  #wrapper #header {
+    # border-bottom: 1px solid #ddd; }
+    #wrapper #header #logo {
+      color: #fff; }
+    #wrapper #header #nav {
+      float: right; }
+
+#neighbors {
+  clear: both;
+  margin: 0 0 0 40px; }
+  #neighbors .neighbor {
+    float: left;
+    margin: 10px;
+    width: 138px;
+    height: 138px;
+    text-align: center;
+    border-radius: 15px; }
+  #neighbors .unwatched {
+    background-color: #ddd;
+    border: 1px solid #aaa; }
+    #neighbors .unwatched p {
+      font-style: italic; }

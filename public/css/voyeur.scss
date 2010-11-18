@@ -1,0 +1,50 @@
+body {
+	color: #888;
+	background-color: #000;
+	
+	a {
+	  color: white;
+	  text-decoration: none;
+	  border-bottom: 1px dotted #fff;
+	}
+}
+
+#wrapper {
+  width: 700px;
+  margin: 40px auto;
+  
+  #header {
+    # border-bottom: 1px solid #ddd;
+  
+    #logo {
+      color: #fff;
+    }
+  
+    #nav {
+      float: right;
+    }
+  }
+}
+
+#neighbors {
+  clear: both;
+  margin: 0 0 0 40px;
+  
+  .neighbor {
+    float: left;
+    margin: 10px;
+    width: 138px;
+    height: 138px;
+    text-align: center;
+    border-radius: 15px;
+  }
+  
+  .unwatched {
+    background-color: #ddd;
+    border: 1px solid #aaa;
+    
+    p {
+      font-style: italic;
+    }
+  }
+}
