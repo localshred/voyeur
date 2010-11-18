@@ -9,6 +9,7 @@ require 'httparty'
 
 set :views, File.expand_path('views', File.dirname(__FILE__))
 set :public, File.expand_path('public', File.dirname(__FILE__))
+set :haml, { format: :html5 }
 
 helpers do
   def url(neighbor)

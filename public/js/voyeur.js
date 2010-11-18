@@ -1,5 +1,6 @@
 // var growl = new Growl();
 var neighbors = ["abacus", "amigo", "atlas", "fony", "loudmouth", "morannon", "newman", "peon", "persona", "toolbox", "vneck", "zeus"];
+// var neighbors = ["amigo"];
 
 var Voyeur = new Class({
 	Binds: ['watchNeighborState'],
@@ -16,14 +17,15 @@ var Voyeur = new Class({
 		Array.each(neighbors, function (neighbor) {
 		  console.log('Watching neighbor '+neighbor);
 		  var neighbor = new Neighbor(neighbor);
-		  neighbor.addEvent('stateChanged', this.watchNeighborState)
+      // neighbor.addEvent('stateChanged', this.watchNeighborState)
 		  watches++;
 		});
 		
 		console.log('Voyeur is now watching '+watches+' neighbors');
 	},
 	
-	watchNeighborState: function (fromState, toState, neighbor) {
+	// Figure out why the weird error occurs on apply when event fired
+	watchNeighborState: function (event) {
 	  // do stuff because we're watching them...
 	}
 	

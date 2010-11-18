@@ -47,4 +47,20 @@ body {
       font-style: italic;
     }
   }
+  
+  .ok {
+    background-color: #D1FF6E;
+    border: 1px solid #00750B;
+  }
+  
+  .building {
+    background-color: #FFE8BE;
+    border: 1px solid orange;
+  }
+  
+  .failed {
+    color: black;
+    background-color: #FA9387;
+    border: 1px solid red;
+  }
 }

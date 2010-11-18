@@ -3,7 +3,7 @@ var Growl = new Class({
 	Implements: [Events],
 	
 	options: {
-	  delay: 5
+	  queueDelay: 5
 	},
 	
   initialize: function () {
@@ -31,7 +31,7 @@ var Growl = new Class({
   },
   
   hideAfterDelay: function () {
-    setTimeout(this.hideMessage, this.options.delay);
+    setTimeout(this.hideMessage, this.options.queueDelay);
   },
   
   hideMessage: function () {
