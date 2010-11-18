@@ -1,66 +1,88 @@
 body {
-	color: #888;
+	font-family: 'Georgia', Times, serif;
+	color: #fff;
 	background-color: #000;
 	
 	a {
-	  color: white;
-	  text-decoration: none;
-	  border-bottom: 1px dotted #fff;
+		color: white;
+		text-decoration: none;
+		border-bottom: 1px dotted #fff;
 	}
 }
 
 #wrapper {
-  width: 700px;
-  margin: 40px auto;
-  
-  #header {
-    # border-bottom: 1px solid #ddd;
-  
-    #logo {
-      color: #fff;
-    }
-  
-    #nav {
-      float: right;
-    }
-  }
+	width: 800px;
+	margin: 60px auto;
+	
+	#header {
+		# border-bottom: 1px solid #ddd;
+	
+		#logo {
+			color: #fff;
+		}
+	
+		#nav {
+			float: right;
+		}
+	}
 }
 
 #neighbors {
-  clear: both;
-  margin: 0 0 0 40px;
-  
-  .neighbor {
-    float: left;
-    margin: 10px;
-    width: 138px;
-    height: 138px;
-    text-align: center;
-    border-radius: 15px;
-  }
-  
-  .unwatched {
-    background-color: #ddd;
-    border: 1px solid #aaa;
-    
-    p {
-      font-style: italic;
-    }
-  }
-  
-  .ok {
-    background-color: #D1FF6E;
-    border: 1px solid #00750B;
-  }
-  
-  .building {
-    background-color: #FFE8BE;
-    border: 1px solid orange;
-  }
-  
-  .failed {
-    color: black;
-    background-color: #FA9387;
-    border: 1px solid red;
-  }
+	color: #888;
+	clear: both;
+	margin: 0 0 0 50px;
+	
+	.neighbor {
+		float: left;
+		margin: 10px;
+		width: 155px;
+		height: 155px;
+		text-align: center;
+		border-radius: 8px;
+		
+		.symbol {
+			font-size: 3em;
+			margin: 20px 0 0;
+		}
+		
+		.name {
+			font-weight: normal;
+			margin: 0;
+		}
+		
+		.status {
+			font-style: italic;
+			margin: 0;
+			padding: 2px 0;
+		}
+		
+	}
+	
+	.unwatched {
+		color: #666;
+/*		background-color: #ddd;*/
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#999));
+		border: 1px solid #aaa;
+	}
+	
+	.ok {
+		color: #056B00;
+/*		background-color: #D1FF6E;*/
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D1FF6E), to(#99BA51));
+		border: 1px solid #00750B;
+	}
+	
+	.building {
+		color: #725D23;
+/*		background-color: #FFE8BE;*/
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFE8BE), to(#AF9F82));
+		border: 1px solid orange;
+	}
+	
+	.failed {
+		color: #5C0400;
+/*		background-color: #FA9387;*/
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FA9387), to(#945750));
+		border: 1px solid red;
+	}
 }

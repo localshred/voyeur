@@ -13,8 +13,9 @@ var Neighbor = new Class({
 	  }
 	},
 	
-  initialize: function (name) {
-    this.name = name;
+  initialize: function (neighbor) {
+    this.name = neighbor.name;
+    this.symbol = neighbor.symbol;
     this.addEvent('unwatched', this.retrieveStatus);
     this.create();
     this.unwatched();
@@ -23,10 +24,12 @@ var Neighbor = new Class({
   
   create: function () {
     this.el = new Element('div', {id: 'neighbor-'+this.name, class: ['neighbor', this.state].join(' ')});
-    this.el_title = new Element('h3', {class: 'title', html: this.name});
+    this.el_symbol = new Element('h1', {class: 'symbol', html: this.symbol});
+    this.el_name = new Element('h4', {class: 'name', html: this.name});
     this.el_state = new Element('p', {class: 'status', html: this.state});
     
-    this.el.adopt(this.el_title);
+    this.el.adopt(this.el_symbol);
+    this.el.adopt(this.el_name);
     this.el.adopt(this.el_state);
     this.el.inject($('neighbors'));
   },

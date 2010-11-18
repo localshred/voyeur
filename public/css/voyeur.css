@@ -1,5 +1,6 @@
 body {
-  color: #888;
+  font-family: 'Georgia', Times, serif;
+  color: #fff;
   background-color: #000; }
   body a {
     color: white;
@@ -7,8 +8,8 @@ body {
     border-bottom: 1px dotted #fff; }
 
 #wrapper {
-  width: 700px;
-  margin: 40px auto; }
+  width: 800px;
+  margin: 60px auto; }
   #wrapper #header {
     # border-bottom: 1px solid #ddd; }
     #wrapper #header #logo {
@@ -17,27 +18,43 @@ body {
       float: right; }
 
 #neighbors {
+  color: #888;
   clear: both;
-  margin: 0 0 0 40px; }
+  margin: 0 0 0 50px; }
   #neighbors .neighbor {
     float: left;
     margin: 10px;
-    width: 138px;
-    height: 138px;
+    width: 155px;
+    height: 155px;
     text-align: center;
-    border-radius: 15px; }
+    border-radius: 8px; }
+    #neighbors .neighbor .symbol {
+      font-size: 3em;
+      margin: 20px 0 0; }
+    #neighbors .neighbor .name {
+      font-weight: normal;
+      margin: 0; }
+    #neighbors .neighbor .status {
+      font-style: italic;
+      margin: 0;
+      padding: 2px 0; }
   #neighbors .unwatched {
-    background-color: #ddd;
+    color: #666;
+    /*		background-color: #ddd;*/
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#999999));
     border: 1px solid #aaa; }
-    #neighbors .unwatched p {
-      font-style: italic; }
   #neighbors .ok {
-    background-color: #D1FF6E;
+    color: #056B00;
+    /*		background-color: #D1FF6E;*/
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d1ff6e), to(#99ba51));
     border: 1px solid #00750B; }
   #neighbors .building {
-    background-color: #FFE8BE;
+    color: #725D23;
+    /*		background-color: #FFE8BE;*/
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffe8be), to(#af9f82));
     border: 1px solid orange; }
   #neighbors .failed {
-    color: black;
-    background-color: #FA9387;
+    color: #5C0400;
+    /*		background-color: #FA9387;*/
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fa9387), to(#945750));
     border: 1px solid red; }

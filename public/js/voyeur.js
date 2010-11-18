@@ -1,5 +1,18 @@
 // var growl = new Growl();
-var neighbors = ["abacus", "amigo", "atlas", "fony", "loudmouth", "morannon", "newman", "peon", "persona", "toolbox", "vneck", "zeus"];
+var neighbors = [
+  {name:"abacus", symbol: "Ab"},
+  {name:"amigo", symbol: "Am"},
+  {name:"atlas", symbol: "At"},
+  {name:"fony", symbol: "Fy"},
+  {name:"loudmouth", symbol: "Lm"},
+  {name:"morannon", symbol: "Mo"},
+  {name:"newman", symbol: "Nm"},
+  {name:"peon", symbol: "Pn"},
+  {name:"persona", symbol: "Ps"},
+  {name:"toolbox", symbol: "Tb"},
+  {name:"vneck", symbol: "Vn"},
+  {name:"zeus", symbol: "Zs"}
+];
 // var neighbors = ["amigo"];
 
 var Voyeur = new Class({
@@ -15,7 +28,7 @@ var Voyeur = new Class({
 		// Setup each neighbor
 		var watches = 0;
 		Array.each(neighbors, function (neighbor) {
-		  console.log('Watching neighbor '+neighbor);
+		  console.log('Watching neighbor '+neighbor.name);
 		  var neighbor = new Neighbor(neighbor);
       // neighbor.addEvent('stateChanged', this.watchNeighborState)
 		  watches++;
@@ -33,5 +46,5 @@ var Voyeur = new Class({
 
 window.addEvent('domready', function () {
 	var voyeur = new Voyeur();
-	$('reload-link').addEvent('click', function () { window.location.reload(); });
+  // $('reload-link').addEvent('click', function () { window.location.reload(); });
 });
