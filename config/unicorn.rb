@@ -6,10 +6,10 @@ env = ENV['RACK_ENV'] || 'production'
 worker_processes 1
 preload_app true
 timeout 30
-pid "/srv/voyeur/tmp/pids/abacus.pid"
-listen '/srv/voyeur/tmp/sockets/abacus.sock', :backlog => 2048
-stderr_path "/srv/voyeur/log/unicorn.log"
-stdout_path "/srv/voyeur/log/unicorn.log"
+pid         '/srv/voyeur/tmp/pids/voyeur.pid'
+listen      '/srv/voyeur/tmp/sockets/voyeur.sock', :backlog => 2048
+stderr_path '/srv/voyeur/log/unicorn.log'
+stdout_path '/srv/voyeur/log/unicorn.log'
 
 before_fork do |server, worker|
   old_pid = "#{server.config[:pid]}.oldbin"
