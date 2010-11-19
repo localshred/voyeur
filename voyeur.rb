@@ -6,59 +6,12 @@ require 'json'
 require 'sinatra'
 require 'haml'
 require 'httparty'
+require 'grit'
 require 'digest/md5'
 
 set :views, File.expand_path('views', File.dirname(__FILE__))
 set :public, File.expand_path('public', File.dirname(__FILE__))
 set :haml, { format: :html5 }
-
-helpers do
-  def url(neighbor)
-    "http://#{neighbor}.ci.moneydesktop.com"
-  end
-  
-  def ping_url(neighbor)
-    url(neighbor)+'/ping'
-  end
-  
-  def build_url(neighbor)
-    url(neighbor)
-  end
-  
-  def get_commit_info(ping_response)
-    info = {}
-    return info if ping_response.body =~ /building/
-    
-    begin
-      head_log = nil
-      if ENV['RACK_ENV'] == 'development'
-        head_log = "/code/src/md/#{params[:neighbor]}/.git/logs/HEAD"
-      else
-        head_log = "/home/git/#{params[:neighbor]}.git/logs/HEAD"
-      end
-      
-      log = File.read(head_log)
-      current_commit = ping_response.body.gsub(/\s+/, '')
-      if log.match(/^[^\s]+\s+(#{current_commit})\s+([^<]+)\s+<([^>]+)>\s+(\d+) -\d+\s+([^:]+:\s+.*)(?:^0)?$/)
-        info = {
-          :sha => current_commit,
-          :author => {
-            :name => $2,
-            :email => $3,
-            :email_hash => Digest::MD5.hexdigest($3.downcase.strip)
-          },
-          :time => Time.at($4.to_i).strftime('%F %T'),
-          :message => $5
-        }
-      end
-    rescue
-      puts 'unable to load commit info for %s: %s' % [params[:neighbor], $!.message]
-    end
-    
-    info
-  end
-  
-end
 
 get '/?' do
   haml :index
@@ -76,5 +29,56 @@ end
 
 post '/:neighbor/build' do
   HTTParty.post(build_url(params[:neighbor]))
-  # `curl -X POST #{build_url(params[:neighbor])}`
+end
+
+helpers do
+  def url(neighbor)
+    "http://#{neighbor}.ci.moneydesktop.com"
+  end
+  
+  def ping_url(neighbor)
+    url(neighbor)+'/ping'
+  end
+  
+  def build_url(neighbor)
+    url(neighbor)
+  end
+  
+  def get_commit_info(ping_response)
+    info = {}
+    repo = git_repo(params[:neighbor])
+    
+    begin
+      if ping_response.body =~ /building/
+        commit = repo.commits.first
+      else
+        sha = ping_response.body.gsub(/\s+/, '')
+        commit = repo.commits(sha, 1).first
+      end
+      
+      info = {
+        :sha => commit.id,
+        :author => {
+          :name => commit.author.name,
+          :email => commit.author.email,
+          :email_hash => Digest::MD5.hexdigest(commit.author.email.downcase)
+        },
+        :time => commit.committed_date,
+        :message => commit.message
+      }
+    rescue
+      puts 'Unable to load commit info for %s: %s' % [params[:neighbor], $!.message]
+    end
+    
+    info
+  end
+  
+  def git_repo(neighbor)
+    if ENV['RACK_ENV'] == 'development'
+      repo = Grit::Repo.new("/code/src/#{neighbor}")
+    else
+      repo = Grit::Repo.new("/home/git/#{neighbor}.git")
+    end
+  end
+  
 end

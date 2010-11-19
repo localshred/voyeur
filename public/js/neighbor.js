@@ -79,7 +79,6 @@ var Neighbor = new Class({
     this.el_state.show();
     if (response.code == 200) {
       this.ok(response);
-      this.updateCommitInfo(response.commit);
     }
     else if (response.code == 412) {
       if (response.body.match(/building/)) {
@@ -87,12 +86,15 @@ var Neighbor = new Class({
       }
       else {
         this.failed();
-        this.updateCommitInfo(response.commit);
       }
     }
     else {
       this.unwatched();
     }
+
+		if (response.commit) {
+	    this.updateCommitInfo(response.commit);
+		}
   },
   
   updateFailed: function (xhr) {

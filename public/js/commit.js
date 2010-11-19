@@ -10,7 +10,7 @@ var Commit = new Class({
   },  
   
   create: function () {
-    this.el = new Element('div', {class: 'commit', style: 'display: none'});
+    this.el = new Element('div', {class: 'commit '+this.neighbor.name, style: 'display: none'});
     
     // Setup neighbor's symbol
     this.symbol = new Element('h1', {class: 'symbol'});
