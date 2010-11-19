@@ -1,6 +1,6 @@
 body {
 	font-family: 'Georgia', Times, serif;
-	color: #fff;
+	color: #aaa;
 	background-color: #000;
 	
 	a {
@@ -11,18 +11,15 @@ body {
 }
 
 #wrapper {
-	width: 800px;
+	width: 708px;
 	margin: 60px auto;
 	
 	#header {
-		# border-bottom: 1px solid #ddd;
-	
 		#logo {
-			color: #fff;
-		}
-	
-		#nav {
-			float: right;
+		  font-size: 3em;
+			color: #1a1a1a;
+			text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+			text-align: center;
 		}
 	}
 }
@@ -30,10 +27,11 @@ body {
 #neighbors {
 	color: #888;
 	clear: both;
-	margin: 0 0 0 50px;
+	margin: 0;
 	
 	.neighbor {
 		float: left;
+		position: relative;
 		margin: 10px;
 		width: 155px;
 		height: 155px;
@@ -42,7 +40,8 @@ body {
 		
 		.symbol {
 			font-size: 3em;
-			margin: 20px 0 0;
+			margin: 30px 0 0;
+			text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
 		}
 		
 		.name {
@@ -56,33 +55,88 @@ body {
 			padding: 2px 0;
 		}
 		
+		.widget_nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 155px;
+      height: 22px;
+      padding: 0;
+      margin: 0;
+  
+      a {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        margin: 3px;
+        border: none;
+        float: left;
+    
+        &.output {
+          background: {
+            color: transparent;
+            image: url(/images/output.png);
+            repeat: none;
+          }
+        }
+    
+        &.build {
+          background: {
+            color: transparent;
+            image: url(/images/build.png);
+            repeat: none;
+          }
+        }
+    
+        &.pause {
+          background: {
+            color: transparent;
+            image: url(/images/pause.png);
+            repeat: none;
+          }
+        }
+    
+        &.play {
+          background: {
+            color: transparent;
+            image: url(/images/play.png);
+            repeat: none;
+          }
+        }
+    
+        &.refresh {
+          background: {
+            color: transparent;
+            image: url(/images/refresh.png);
+            repeat: none;
+          }
+        }
+    
+      }
+    }
 	}
 	
 	.unwatched {
 		color: #666;
-/*		background-color: #ddd;*/
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#999));
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#999));
 		border: 1px solid #aaa;
 	}
 	
 	.ok {
 		color: #056B00;
-/*		background-color: #D1FF6E;*/
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D1FF6E), to(#99BA51));
-		border: 1px solid #00750B;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#D1FF6E), to(#6E8738));
+		border: 1px solid #0F0;
 	}
 	
 	.building {
 		color: #725D23;
-/*		background-color: #FFE8BE;*/
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFE8BE), to(#AF9F82));
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#FFE8BE), to(#6E6452));
 		border: 1px solid orange;
 	}
 	
 	.failed {
 		color: #5C0400;
-/*		background-color: #FA9387;*/
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FA9387), to(#945750));
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#FA9387), to(#854E48));
 		border: 1px solid red;
 	}
 }

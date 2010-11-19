@@ -32,6 +32,7 @@ var Neighbor = new Class({
     this.el.adopt(this.el_name);
     this.el.adopt(this.el_state);
     this.el.inject($('neighbors'));
+    new WidgetNav(this);
   },
   
   transitionState: function (toState) {
@@ -48,7 +49,6 @@ var Neighbor = new Class({
     // Now transition the states
     var fromState = this.state;
     this.state = toState;
-    console.log('state change from '+fromState+' -> '+toState);
     
     // Update the UI
     this.el.removeClass(fromState);
@@ -75,7 +75,6 @@ var Neighbor = new Class({
   updateSucceeded: function (response) {
     this.el.unspin();
     this.el_state.show();
-    // console.log('inside updateSucceeded for '+this.name);
     if (response.code == 200) {
       this.ok();
     }
@@ -95,40 +94,33 @@ var Neighbor = new Class({
   updateFailed: function (xhr) {
     this.el.unspin();
     this.el_state.show();
-    // console.log('inside updateFailed for '+this.name);
-    // console.dir(xhr);
-    // if (statusCode == 412) {
-    //   if (response.body.match(/building/)) {
-    //     this.buiding();
-    //   }
-    //   else {
-    //     this.failed();
-    //   }
-    // }
-    // else {
-      this.unwatched();
-    // }
+    this.unwatched();
   },
   
   unwatched: function () {
-    console.log('unwatched called for '+this.name);
     this.attempts = 0;
     this.transitionState('unwatched');
   },
   
   ok: function () {
-    console.log('ok called for '+this.name);
     this.transitionState('ok');
   },
 
   building: function () {
-    console.log('building called for '+this.name);
     this.transitionState('building');
   },
   
   failed: function () {
-    console.log('failed called for '+this.name);
     this.transitionState('failed');
+  },
+  
+  triggerBuild: function () {
+    new Request({url: '/'+this.name+'/build'}).post();
+    this.building();
+  },
+  
+  goToOutput: function () {
+    location.href = 'http://'+this.name+'.ci.moneydesktop.com';
   }
   
 });

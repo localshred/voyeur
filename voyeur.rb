@@ -5,6 +5,7 @@ Bundler.setup :default, ENV['RACK_ENV']
 require 'json'
 require 'sinatra'
 require 'haml'
+require 'sass'
 require 'httparty'
 
 set :views, File.expand_path('views', File.dirname(__FILE__))
@@ -39,5 +40,11 @@ get '/:neighbor/update.json' do
 end
 
 post '/:neighbor/build' do
-  `curl -X POST #{build_url(params[:neighbor])}`
+  HTTParty.post(build_url(params[:neighbor]))
+  # `curl -X POST #{build_url(params[:neighbor])}`
+end
+
+module Sass::Script::Functions
+  def border_radius radius
+  end
 end

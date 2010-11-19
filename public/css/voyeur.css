@@ -1,6 +1,6 @@
 body {
   font-family: 'Georgia', Times, serif;
-  color: #fff;
+  color: #aaa;
   background-color: #000; }
   body a {
     color: white;
@@ -8,21 +8,21 @@ body {
     border-bottom: 1px dotted #fff; }
 
 #wrapper {
-  width: 800px;
+  width: 708px;
   margin: 60px auto; }
-  #wrapper #header {
-    # border-bottom: 1px solid #ddd; }
-    #wrapper #header #logo {
-      color: #fff; }
-    #wrapper #header #nav {
-      float: right; }
+  #wrapper #header #logo {
+    font-size: 3em;
+    color: #1a1a1a;
+    text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
+    text-align: center; }
 
 #neighbors {
   color: #888;
   clear: both;
-  margin: 0 0 0 50px; }
+  margin: 0; }
   #neighbors .neighbor {
     float: left;
+    position: relative;
     margin: 10px;
     width: 155px;
     height: 155px;
@@ -30,7 +30,8 @@ body {
     border-radius: 8px; }
     #neighbors .neighbor .symbol {
       font-size: 3em;
-      margin: 20px 0 0; }
+      margin: 30px 0 0;
+      text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px; }
     #neighbors .neighbor .name {
       font-weight: normal;
       margin: 0; }
@@ -38,23 +39,54 @@ body {
       font-style: italic;
       margin: 0;
       padding: 2px 0; }
+    #neighbors .neighbor .widget_nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 155px;
+      height: 22px;
+      padding: 0;
+      margin: 0; }
+      #neighbors .neighbor .widget_nav a {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        margin: 3px;
+        border: none;
+        float: left; }
+        #neighbors .neighbor .widget_nav a.output {
+          background-color: transparent;
+          background-image: url(/images/output.png);
+          background-repeat: none; }
+        #neighbors .neighbor .widget_nav a.build {
+          background-color: transparent;
+          background-image: url(/images/build.png);
+          background-repeat: none; }
+        #neighbors .neighbor .widget_nav a.pause {
+          background-color: transparent;
+          background-image: url(/images/pause.png);
+          background-repeat: none; }
+        #neighbors .neighbor .widget_nav a.play {
+          background-color: transparent;
+          background-image: url(/images/play.png);
+          background-repeat: none; }
+        #neighbors .neighbor .widget_nav a.refresh {
+          background-color: transparent;
+          background-image: url(/images/refresh.png);
+          background-repeat: none; }
   #neighbors .unwatched {
     color: #666;
-    /*		background-color: #ddd;*/
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#999999));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#999999));
     border: 1px solid #aaa; }
   #neighbors .ok {
     color: #056B00;
-    /*		background-color: #D1FF6E;*/
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d1ff6e), to(#99ba51));
-    border: 1px solid #00750B; }
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#d1ff6e), to(#6e8738));
+    border: 1px solid #0F0; }
   #neighbors .building {
     color: #725D23;
-    /*		background-color: #FFE8BE;*/
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffe8be), to(#af9f82));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ffe8be), to(#6e6452));
     border: 1px solid orange; }
   #neighbors .failed {
     color: #5C0400;
-    /*		background-color: #FA9387;*/
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fa9387), to(#945750));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fa9387), to(#854e48));
     border: 1px solid red; }
