@@ -15,36 +15,28 @@ var Widget = new Class({
       html: '&nbsp;',
       title: this.name+' neighbor'
     });
-    console.dir(this.el);
     this.el.addEvent('click', this.handleClick);
   },
   
   handleClick: function (event) {
-    console.log('widget was clicked');
     event.preventDefault();
     switch (this.name) {
       case 'build':
-        console.log('build clicked');
         this.neighbor.triggerBuild();
         break;
       case 'output':
-        console.log('output clicked');
         this.neighbor.goToOutput();
         break;
       case 'pause':
-        console.log('pause clicked');
         this.neighbor.unwatched();
         break;
       case 'play':
-        console.log('play clicked');
         this.neighbor.retrieveStatus();
         break;
       case 'refresh':
-        console.log('refresh clicked');
         this.neighbor.retrieveStatus();
         break;
       default:
-        console.log(this.name+' widget name matches nothing');
         break;
     }
   }

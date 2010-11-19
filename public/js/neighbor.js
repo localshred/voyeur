@@ -31,8 +31,10 @@ var Neighbor = new Class({
     this.el.adopt(this.el_symbol);
     this.el.adopt(this.el_name);
     this.el.adopt(this.el_state);
-    this.el.inject($('neighbors'));
-    new WidgetNav(this);
+    $('neighbors').adopt(this.el);
+    
+    this.widgetNav = new WidgetNav(this);
+    this.commit = new Commit(this);
   },
   
   transitionState: function (toState) {
@@ -76,7 +78,8 @@ var Neighbor = new Class({
     this.el.unspin();
     this.el_state.show();
     if (response.code == 200) {
-      this.ok();
+      this.ok(response);
+      this.updateCommitInfo(response.commit);
     }
     else if (response.code == 412) {
       if (response.body.match(/building/)) {
@@ -84,6 +87,7 @@ var Neighbor = new Class({
       }
       else {
         this.failed();
+        this.updateCommitInfo(response.commit);
       }
     }
     else {
@@ -121,6 +125,10 @@ var Neighbor = new Class({
   
   goToOutput: function () {
     location.href = 'http://'+this.name+'.ci.moneydesktop.com';
+  },
+  
+  updateCommitInfo: function (commit) {
+    this.commit.update(commit);
   }
   
 });
