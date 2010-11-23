@@ -75,8 +75,9 @@ helpers do
   
   def git_repo(neighbor)
     if ENV['RACK_ENV'] == 'development'
-      repo = Grit::Repo.new("/code/src/#{neighbor}")
+      repo = Grit::Repo.new("/code/src/md/#{neighbor}")
     else
+      puts 'in prod mode!'
       repo = Grit::Repo.new("/home/git/#{neighbor}.git")
     end
   end

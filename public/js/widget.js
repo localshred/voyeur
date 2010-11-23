@@ -10,7 +10,7 @@ var Widget = new Class({
   
   load: function () {
     this.el = new Element('a', {
-      class: ['widget', this.name].join(' '),
+      'class': ['widget', this.name].join(' '),
       href: '#',
       html: '&nbsp;',
       title: this.name+' neighbor'

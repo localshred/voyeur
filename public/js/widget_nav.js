@@ -20,7 +20,7 @@ var WidgetNav = new Class({
   
   load: function () {
     // Create the widget bar
-    this.nav = new Element('div', {class:'widget_nav', style: 'display: none'});
+    this.nav = new Element('div', {'class':'widget_nav', style: 'display: none'});
     this.nav.inject(this.neighbor.el);
     
     this.neighbor.el.addEvent('mouseenter', this.show);
