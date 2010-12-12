@@ -82,7 +82,7 @@ var Commit = new Class({
     $$('div.commit').each(function (e) {
       e.hide();
     });
-    this.el.show();
+    // this.el.show();
   },
   
   hide: function (event) {

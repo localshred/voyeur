@@ -12,6 +12,7 @@ require 'digest/md5'
 set :views, File.expand_path('views', File.dirname(__FILE__))
 set :public, File.expand_path('public', File.dirname(__FILE__))
 set :haml, { format: :html5 }
+disable :can_ping
 
 get '/?' do
   haml :index
@@ -19,12 +20,24 @@ end
 
 get '/:neighbor/update.json' do
   content_type :json
-  ping_response = HTTParty.get(ping_url(params[:neighbor]))
-  {
-    :code => ping_response.code,
-    :body => ping_response.body,
-    :commit => get_commit_info(ping_response)
-  }.to_json
+  if settings.can_ping?
+    ping_response = HTTParty.get(ping_url(params[:neighbor]))
+    {
+      :code => ping_response.code,
+      :body => ping_response.body,
+      :commit => get_commit_info(ping_response)
+    }.to_json
+  else
+    states = %w(ok building failed)
+    which = rand(states.size) - 1
+    code = states[which] != 'ok' ? 412 : 200
+    body = states[which] == 'building' ? 'building' : nil
+    {
+      :code => code,
+      :body => body,
+      :commit => get_commit_info(OpenStruct.new(:code => code, :body => body), states[which])
+    }.to_json
+  end
 end
 
 post '/:neighbor/build' do
@@ -44,12 +57,12 @@ helpers do
     url(neighbor)
   end
   
-  def get_commit_info(ping_response)
+  def get_commit_info(ping_response, status=nil)
     info = {}
     repo = git_repo(params[:neighbor])
     
     begin
-      if ping_response.body =~ /building/
+      if ping_response.body =~ /building/ || ping_response.body.nil? || status == 'failed'
         commit = repo.commits.first
       else
         sha = ping_response.body.gsub(/\s+/, '')
@@ -74,12 +87,8 @@ helpers do
   end
   
   def git_repo(neighbor)
-    if ENV['RACK_ENV'] == 'development'
-      repo = Grit::Repo.new("/code/src/md/#{neighbor}")
-    else
-      puts 'in prod mode!'
-      repo = Grit::Repo.new("/home/git/#{neighbor}.git")
-    end
+    path = development? ? "/code/src/md/#{neighbor}" : "/home/git/#{neighbor}.git"
+    Grit::Repo.new(path)
   end
   
 end

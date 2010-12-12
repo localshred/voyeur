@@ -5,10 +5,10 @@ var WidgetNav = new Class({
   
   options: {
     states: {
-      unwatched: ['output', 'play'],
-      ok: ['output', 'refresh', 'pause'],
-      building: ['refresh'],
-      failed: ['output', 'build', 'refresh', 'pause']
+      unwatched: ['output', 'watch'],
+      building: ['output', 'refresh'],
+      ok: ['output', 'build', 'refresh', 'unwatch'],
+      failed: ['output', 'build', 'refresh', 'unwatch']
     }
   },
   
@@ -30,8 +30,8 @@ var WidgetNav = new Class({
     this.widgets = {
       build: new Widget('build', this.neighbor),
       output: new Widget('output', this.neighbor),
-      pause: new Widget('pause', this.neighbor),
-      play: new Widget('play', this.neighbor),
+      unwatch: new Widget('unwatch', this.neighbor),
+      watch: new Widget('watch', this.neighbor),
       refresh: new Widget('refresh', this.neighbor)
     };
   },

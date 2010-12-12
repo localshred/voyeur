@@ -72,7 +72,7 @@ var Neighbor = new Class({
   
   retrieveStatus: function () {
     this.el_state.hide();
-    this.el.set('spinner', {message: 'updating...'});
+    this.el.set('spinner', {message: 'Getting latest...'});
     this.el.spin();
     this.statusRequest = new Request.JSON({
 			url: '/'+this.name+'/update.json',
@@ -97,7 +97,7 @@ var Neighbor = new Class({
       this.ok(response);
     }
     else if (response.code == 412) {
-      if (response.body.match(/building/)) {
+      if (response.body != null && response.body.match(/building/)) {
         this.building();
       }
       else {

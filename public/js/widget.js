@@ -27,12 +27,10 @@ var Widget = new Class({
       case 'output':
         this.neighbor.goToOutput();
         break;
-      case 'pause':
+      case 'unwatch':
         this.neighbor.unwatched();
         break;
-      case 'play':
-        this.neighbor.retrieveStatus();
-        break;
+      case 'watch':
       case 'refresh':
         this.neighbor.retrieveStatus();
         break;

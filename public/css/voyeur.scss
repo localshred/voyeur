@@ -2,6 +2,8 @@ body {
 	font-family: 'Georgia', Times, serif;
 	color: #aaa;
 	background-color: #000;
+	margin: 0;
+	padding: 0;
 	
 	a {
 		color: white;
@@ -12,11 +14,15 @@ body {
 
 #wrapper {
   position: relative;
-	width: 708px;
-	margin: 60px auto;
+	max-width: 708px;
+	width: 80%;
+	margin: auto auto;
+	padding: 20px;
 	
 	#header {
 		#logo {
+		  margin: 0;
+		  padding: 0;
 		  font-size: 3em;
 			color: #1a1a1a;
 			text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
@@ -74,12 +80,25 @@ body {
 #neighbors {
 	color: #888;
 	clear: both;
-	margin: 0;
+	margin: 5%;
 	
+	.spinner {
+	  background: rgba(50, 50, 50, .75);
+	  color: white;
+	  font-style: italic;
+	  
+	  .spinner-img {
+	    background: url(../images/loader.gif) no-repeat;
+    	width: 16px;
+    	height: 16px;
+    	margin: 0 auto;
+    }
+	}
+		
 	.neighbor {
 		float: left;
 		position: relative;
-		margin: 10px;
+		margin: 0.3%;
 		width: 155px;
 		height: 155px;
 		text-align: center;
@@ -110,6 +129,9 @@ body {
       height: 22px;
       padding: 0;
       margin: 0;
+      background: rgba(20, 20, 20, .5);
+  		border-bottom-left-radius: 8px;
+  		border-bottom-right-radius: 8px;
   
       a {
         width: 16px;
@@ -135,7 +157,7 @@ body {
           }
         }
     
-        &.pause {
+        &.unwatch {
           background: {
             color: transparent;
             image: url(/images/pause.png);
@@ -143,7 +165,7 @@ body {
           }
         }
     
-        &.play {
+        &.watch {
           background: {
             color: transparent;
             image: url(/images/play.png);
@@ -186,4 +208,25 @@ body {
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#FA9387), to(#854E48));
 		border: 1px solid red;
 	}
+}
+
+/* Clearfix */
+
+.cf:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+/* IE6 */
+* html .cf {
+  zoom: 1;
+}
+
+/* IE7 */
+*:first-child+html .cf {
+  zoom: 1;
 }

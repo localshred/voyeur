@@ -72,6 +72,7 @@ var Voyeur = new Class({
 });
 
 window.addEvent('domready', function () {
+  new Element('img', {style: 'display:none;', src: '/images/loader.gif'});
 	var voyeur = new Voyeur();
 	voyeur.observe([
     {name:"abacus", symbol: "Ab"},
