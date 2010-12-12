@@ -21,6 +21,7 @@ var Neighbor = new Class({
   initialize: function (neighbor) {
     this.name = neighbor.name;
     this.symbol = neighbor.symbol;
+    this.url = 'http://'+this.name+'.ci.moneydesktop.com';
     this.addEvent('unwatched', this.retrieveStatus);
     this.create();
     this.unwatched();
@@ -40,6 +41,7 @@ var Neighbor = new Class({
     
     this.widgetNav = new WidgetNav(this);
     this.commit = new Commit(this);
+    this.output = new Lightbox(this);
   },
   
   transitionState: function (toState) {
@@ -144,8 +146,14 @@ var Neighbor = new Class({
     this.building();
   },
   
-  goToOutput: function () {
-    location.href = 'http://'+this.name+'.ci.moneydesktop.com';
+  showOutput: function () {
+    // Hide the commit window
+    this.commit.show();
+    this.commit.hide();
+    
+    // Open up the output lightbox
+    this.output.update(this);
+    this.output.open();
   },
   
   updateCommitInfo: function (commit) {

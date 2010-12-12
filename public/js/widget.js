@@ -25,7 +25,7 @@ var Widget = new Class({
         this.neighbor.triggerBuild();
         break;
       case 'output':
-        this.neighbor.goToOutput();
+        this.neighbor.showOutput();
         break;
       case 'unwatch':
         this.neighbor.unwatched();

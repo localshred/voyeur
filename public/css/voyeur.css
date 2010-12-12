@@ -11,8 +11,8 @@ body {
 
 #wrapper {
   position: relative;
-  max-width: 708px;
-  width: 80%;
+  max-width: 786px;
+  width: 90%;
   margin: auto auto;
   padding: 20px; }
   #wrapper #header #logo {
@@ -22,34 +22,6 @@ body {
     color: #1a1a1a;
     text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
     text-align: center; }
-
-.commit {
-  position: absolute;
-  margin: 0;
-  padding: 20px 40px;
-  background: rgba(30, 30, 30, 0.9);
-  bottom: 0;
-  right: 0;
-  left: 0;
-  color: #fff; }
-  .commit .symbol {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    font-size: 3em;
-    margin: 0;
-    color: #2a2a2a;
-    text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px; }
-  .commit .author {
-    float: left;
-    margin-right: 30px; }
-  .commit p {
-    margin: 0;
-    padding: 3px; }
-    .commit p.message {
-      margin-bottom: 20px; }
-    .commit p.sha, .commit p.date {
-      font-size: 10px; }
 
 #neighbors {
   color: #888;
@@ -67,7 +39,7 @@ body {
   #neighbors .neighbor {
     float: left;
     position: relative;
-    margin: 0.3%;
+    margin: 10px;
     width: 155px;
     height: 155px;
     text-align: center;
@@ -137,6 +109,60 @@ body {
     color: #5C0400;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#fa9387), to(#854e48));
     border: 1px solid red; }
+
+.commit {
+  position: absolute;
+  margin: 0;
+  padding: 20px 40px;
+  background: rgba(30, 30, 30, 0.9);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #fff; }
+  .commit .symbol {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 3em;
+    margin: 0;
+    color: #2a2a2a;
+    text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px; }
+  .commit .author {
+    float: left;
+    margin-right: 30px; }
+  .commit p {
+    margin: 0;
+    padding: 3px; }
+    .commit p.message {
+      margin-bottom: 20px; }
+    .commit p.sha, .commit p.date {
+      font-size: 10px; }
+
+#output {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  height: 80%;
+  margin: 100px 60px 60px;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000; }
+  #output .title {
+    position: absolute;
+    top: -20px;
+    left: 8px;
+    color: #fff;
+    font-size: 20px; }
+  #output a.close {
+    position: absolute;
+    top: -20px;
+    right: 4px;
+    background: url(../images/close.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    border: none; }
+  #output .lightbox {
+    width: 100%;
+    height: 100%; }
 
 /* Clearfix */
 .cf:after {

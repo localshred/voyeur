@@ -12,7 +12,7 @@ require 'digest/md5'
 set :views, File.expand_path('views', File.dirname(__FILE__))
 set :public, File.expand_path('public', File.dirname(__FILE__))
 set :haml, { format: :html5 }
-disable :can_ping
+enable :can_ping
 
 get '/?' do
   haml :index

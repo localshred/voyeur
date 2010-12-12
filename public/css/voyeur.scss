@@ -14,8 +14,8 @@ body {
 
 #wrapper {
   position: relative;
-	max-width: 708px;
-	width: 80%;
+	max-width: 786px;
+	width: 90%;
 	margin: auto auto;
 	padding: 20px;
 	
@@ -31,44 +31,6 @@ body {
 	}
 }
 
-.commit {
-  position: absolute;
-  margin: 0;
-  padding: 20px 40px;
-  background: rgba(30, 30, 30, .90);
-  bottom: 0;
-  right: 0;
-  left: 0;
-	color: #fff;
-	
-  .symbol {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-		font-size: 3em;
-		margin: 0;
-		color: #2a2a2a;
-    text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
-  }
-
-  .author {
-    float: left;
-    margin-right: 30px;
-  }
-  
-	p {
-	  margin: 0;
-	  padding: 3px;
-    
-    &.message {
-      margin-bottom: 20px;
-    }
-  
-    &.sha, &.date {
-      font-size: 10px;
-    }
-	}
-}
 
 #neighbors {
 	color: #888;
@@ -91,7 +53,7 @@ body {
 	.neighbor {
 		float: left;
 		position: relative;
-		margin: 0.3%;
+		margin: 10px;
 		width: 155px;
 		height: 155px;
 		text-align: center;
@@ -201,6 +163,78 @@ body {
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#FA9387), to(#854E48));
 		border: 1px solid red;
 	}
+}
+
+.commit {
+  position: absolute;
+  margin: 0;
+  padding: 20px 40px;
+  background: rgba(30, 30, 30, .90);
+  bottom: 0;
+  right: 0;
+  left: 0;
+	color: #fff;
+	
+  .symbol {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+		font-size: 3em;
+		margin: 0;
+		color: #2a2a2a;
+    text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+  }
+
+  .author {
+    float: left;
+    margin-right: 30px;
+  }
+  
+	p {
+	  margin: 0;
+	  padding: 3px;
+    
+    &.message {
+      margin-bottom: 20px;
+    }
+  
+    &.sha, &.date {
+      font-size: 10px;
+    }
+	}
+}
+
+#output {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  height: 80%;
+  margin: 100px 60px 60px;
+  background: rgba(0,0,0,.7);
+  z-index: 2000;
+  
+  .title {
+    position: absolute;
+    top: -20px;
+    left: 8px;
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  a.close {
+    position: absolute;
+    top: -20px;
+    right: 4px;
+    background: url(../images/close.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    border: none;
+  }
+  
+  .lightbox {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* Clearfix */
