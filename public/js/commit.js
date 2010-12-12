@@ -1,9 +1,13 @@
 var Commit = new Class({
   
-  Binds: ['create', 'update', 'show', 'hide'],
+  Binds: ['create', 'update', 'show', 'hide', 'manageRollover'],
   Implements: [Events],
   
   options: {
+    gravatar: {
+      size: "100",
+      type: "retro"
+    },
     symbol: null,
     message: null,
     sha: null,
@@ -18,11 +22,12 @@ var Commit = new Class({
   initialize: function (neighbor) {
     this.neighbor = neighbor;
     this.create();
-    this.neighbor.el.addEvent('mouseenter', this.show);
+    this.neighbor.addEvent('stateChanged', this.manageRollover);
   },  
   
   create: function () {
     this.el = new Element('div', {'class': 'commit '+this.neighbor.name, style: 'display: none'});
+    this.el.addEvent('click', this.hide);
     
     this.elements = {
       // Setup neighbor's symbol
@@ -53,7 +58,7 @@ var Commit = new Class({
     );
     
     // Inject into the wrapper
-    this.el.inject($('wrapper'));
+    this.el.inject(document.body);
   },
   
   update: function (commit) {
@@ -67,7 +72,10 @@ var Commit = new Class({
     
     // Update the commit elements
     this.elements.symbol.set('text', this.neighbor.symbol);
-    this.elements.author.gravatar.set('src', 'http://www.gravatar.com/avatar/'+this.options.author.email_hash+'?s=70&d=retro');
+    this.elements.author.gravatar.set('src', 'http://www.gravatar.com/avatar/'
+                                              +this.options.author.email_hash
+                                              +'?s='+this.options.gravatar.size
+                                              +'&d='+this.options.gravatar.type);
     this.elements.author.email.set({
       'href': 'mailto:'+this.options.author.email+'?subject='+this.neighbor.name+' build status',
       'title': 'Send email to '+this.options.author.name
@@ -82,11 +90,20 @@ var Commit = new Class({
     $$('div.commit').each(function (e) {
       e.hide();
     });
-    // this.el.show();
+    this.el.show();
   },
   
   hide: function (event) {
     this.el.hide();
+  },
+  
+  manageRollover: function (state) {
+    if (state.to == 'unwatched') {
+      this.neighbor.el.removeEvent('mouseenter');
+    }
+    else if (state.from == 'unwatched') {
+      this.neighbor.el.addEvent('mouseenter', this.show);
+    }
   }
   
 });
