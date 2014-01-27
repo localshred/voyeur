@@ -64,8 +64,8 @@ var Voyeur = new Class({
 	growl: function(opts) {
     window.fluid.showGrowlNotification(Object.merge({
       priority: 1,
-      onclick: function () { location.href = 'http://'+opts.identifier+'.ci.moneydesktop.com'; },
-      icon: 'http://ci.moneydesktop.com/images/logo64.png'
+      onclick: function () { location.href = 'http://'+opts.identifier+'.ci.myapp.com'; },
+      icon: 'http://ci.myapp.com/images/logo64.png'
     }, opts));
 	}
 	

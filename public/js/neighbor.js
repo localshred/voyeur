@@ -21,7 +21,7 @@ var Neighbor = new Class({
   initialize: function (neighbor) {
     this.name = neighbor.name;
     this.symbol = neighbor.symbol;
-    this.url = 'http://'+this.name+'.ci.moneydesktop.com';
+    this.url = 'http://'+this.name+'.ci.myapp.com';
     this.addEvent('unwatched', this.retrieveStatus);
     this.create();
     this.unwatched();

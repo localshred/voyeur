@@ -46,7 +46,7 @@ end
 
 helpers do
   def url(neighbor)
-    "http://#{neighbor}.ci.moneydesktop.com"
+    "http://#{neighbor}.ci.myapp.com"
   end
   
   def ping_url(neighbor)

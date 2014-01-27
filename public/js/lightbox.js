@@ -1,12 +1,5 @@
 var Lightbox = new Class({
   
-  /*
-		#output
-			.title loudmouth
-			%a.close{:href => '#'} &nbsp;
-			%iframe.lightbox{:src => "http://amigo.ci.moneydesktop.com"}
-  */
-
 	Binds: ['cannibalize', 'update', 'open', 'close'],
 	Implements: [Events],
   
